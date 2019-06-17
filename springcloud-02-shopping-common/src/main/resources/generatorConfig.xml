@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<!-- 设置数据库驱动文件的位置-->
+	<classPathEntry location="D:/maven-repository/mysql/mysql-connector-java/5.1.47/mysql-connector-java-5.1.47.jar"/>
+
+  	<context id="mysql" targetRuntime="MyBatis3Simple">
+  	 <commentGenerator>
+  	 	<property name="supperessAllComments" value="true"/>
+  	 </commentGenerator>
+
+	<!--设置数据库的链接信息 -->
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/test1" driverClass="com.mysql.jdbc.Driver" password="123789ADP" userId="root" />
+
+    <!-- 设置实体类所在的位置-->
+    <javaModelGenerator targetPackage="com.springcloud.entity" targetProject="springcloud-02-shopping-common\src\main\java" />
+
+    <!-- 设置实体类对应的映射文件的位置-->
+    <sqlMapGenerator targetPackage="mapper" targetProject="springcloud-02-shopping-orders-provider\src\main\resources" />
+
+    <!--设置映射文件对应的接口的位置-->
+    <javaClientGenerator targetPackage="com.springcloud.dao" targetProject="springcloud-02-shopping-orders-provider\src\main\java" type="XMLMAPPER" />
+
+     <table schema="test1" tableName="orders">
+    	<!-- 是否使用表中的类名生成实体类成员变量的名字-->
+      <property name="userActualColumnNames" value="false"/>
+    </table>
+    <table schema="test1" tableName="order_detail">
+    	<!-- 是否使用表中的类名生成实体类成员变量的名字-->
+      <property name="userActualColumnNames" value="false"/>
+    </table>
+  </context>
+</generatorConfiguration>
